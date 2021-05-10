@@ -1,9 +1,11 @@
-import * as express from "express";
-import * as mongoose from 'mongoose';
+import express from "express";
+import mongoose from 'mongoose';
+import * as dotenv from "dotenv";
+dotenv.config();
 
 const app : express.Application = express()
 
-const db = process.env.MONGO_URI;
+const db = process.env.MONGO_URI || '';
 const port = process.env.PORT;
 
 mongoose.connect(db, {
