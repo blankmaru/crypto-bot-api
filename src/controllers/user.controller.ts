@@ -3,8 +3,9 @@ import User from "../models/User";
 
 export const findAll = async (req: Request, res: Response): Promise<Response | undefined> => {
     try {
-        User.find({}).then((docs: any) => {
-            return res.status(200).send({ users: docs });
+        User.find({}, (err: Error, docs: any) => {
+            if (!err) return res.status(200).send({ users: docs })
+            if (err) return res.status(400).send({ error: err })
         })
     } catch(err) {
         return res.status(400).send({ error: err });

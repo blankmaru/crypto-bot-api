@@ -44,8 +44,11 @@ var User_1 = __importDefault(require("../models/User"));
 var findAll = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         try {
-            User_1.default.find({}).then(function (docs) {
-                return res.status(200).send({ users: docs });
+            User_1.default.find({}, function (err, docs) {
+                if (!err)
+                    return res.status(200).send({ users: docs });
+                if (err)
+                    return res.status(400).send({ error: err });
             });
         }
         catch (err) {
