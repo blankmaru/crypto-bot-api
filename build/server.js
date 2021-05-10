@@ -34,9 +34,7 @@ mongoose_1.default.connect(db, {
     useCreateIndex: true,
     useFindAndModify: true,
     useUnifiedTopology: true
-}, function () { return console.log('MONGODB CONNECTED'); }).catch(function (err) {
-    console.error(err);
-});
+}, function () { return console.log('MONGODB CONNECTED'); });
 app.use(express_1.default.json());
 var user_routes_1 = __importDefault(require("./routes/user.routes"));
 app.use('/api/users', user_routes_1.default);
