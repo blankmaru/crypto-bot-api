@@ -13,9 +13,7 @@ mongoose.connect(db, {
     useCreateIndex: true,
     useFindAndModify: true,
     useUnifiedTopology: true
-}, () => console.log('MONGODB CONNECTED')).catch((err) => {
-    console.error(err);
-});
+}, () => console.log('MONGODB CONNECTED'))
 
 app.use(express.json());
 
