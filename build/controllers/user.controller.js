@@ -66,6 +66,7 @@ var update = function (req, res) { return __awaiter(void 0, void 0, void 0, func
                 _a.trys.push([0, 2, , 3]);
                 id = req === null || req === void 0 ? void 0 : req.params.id;
                 refProc = (req === null || req === void 0 ? void 0 : req.body).refProc;
+                console.log(refProc);
                 return [4 /*yield*/, User_1.default.findByIdAndUpdate(id, { RefProc: refProc }, function (err, user) {
                         if (err)
                             return res.status(400).send(err);
