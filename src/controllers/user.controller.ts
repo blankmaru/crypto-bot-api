@@ -18,7 +18,7 @@ export const update = async (req: Request, res: Response): Promise<Response | un
         const { refProc } = req?.body;
         console.log(refProc)
 
-        await User.findByIdAndUpdate(id, {RefProc: refProc}, (err: Error, user: any) => {
+        await User.findByIdAndUpdate(id, {$set: refProc}, (err: Error, user: any) => {
             if (err) return res.status(400).send(err);
             return res.status(200).send(user);
         });
