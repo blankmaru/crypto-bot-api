@@ -67,7 +67,7 @@ var update = function (req, res) { return __awaiter(void 0, void 0, void 0, func
                 id = req === null || req === void 0 ? void 0 : req.params.id;
                 refProc = (req === null || req === void 0 ? void 0 : req.body).refProc;
                 console.log(refProc);
-                return [4 /*yield*/, User_1.default.findOneAndUpdate({ _id: id }, { RefProc: refProc }, { new: true }).then(function (doc) {
+                return [4 /*yield*/, User_1.default.findOneAndUpdate({ _id: id }, { RefProc: "30%", is_paid: false }, { new: true }).then(function (doc) {
                         return res.send(doc);
                     })];
             case 1:
