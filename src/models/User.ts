@@ -23,6 +23,9 @@ const User = new Schema({
     },
     UserID:{
         type:String
+    },
+    RefProc: {
+        type: String
     }
 })
 
