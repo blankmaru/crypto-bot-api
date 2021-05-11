@@ -23,5 +23,5 @@ var express = __importStar(require("express"));
 var router = express.Router();
 var user_controller_1 = require("../controllers/user.controller");
 router.get('/', user_controller_1.findAll);
-router.post('/', user_controller_1.createNewUser);
+router.patch('/:id', user_controller_1.update);
 exports.default = router;

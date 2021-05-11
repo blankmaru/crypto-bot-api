@@ -17,11 +17,9 @@ export const update = async (req: Request, res: Response): Promise<Response | un
         const id = req?.params.id;
         const { refProc } = req?.body;
 
-        console.log(id)
-
-        // await User.findOneAndUpdate({ _id: id }, { RefProc: refProc }).then((doc) => {
-        //     return res.send('success');
-        // }).catch((err: Error) => res.status(400).send({ error: err }))
+        await User.findOneAndUpdate({ _id: id }, { RefProc: refProc }).then((doc) => {
+            return res.send('success');
+        }).catch((err: Error) => res.status(400).send({ error: err }))
 
     } catch(err) {
         return res.status(400).send({ error: err });

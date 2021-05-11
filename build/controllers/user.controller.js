@@ -39,7 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createNewUser = exports.findAll = void 0;
+exports.update = exports.findAll = void 0;
 var User_1 = __importDefault(require("../models/User"));
 var findAll = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
@@ -58,19 +58,17 @@ var findAll = function (req, res) { return __awaiter(void 0, void 0, void 0, fun
     });
 }); };
 exports.findAll = findAll;
-var createNewUser = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var newUser, err_1;
+var update = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var id, refProc, err_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                newUser = new User_1.default({
-                    Username: 'Test',
-                    UserID: '12345-6789'
-                });
-                return [4 /*yield*/, newUser.save(function (err, doc) {
-                        return res.status(200).send({ success: true });
-                    })];
+                id = req === null || req === void 0 ? void 0 : req.params.id;
+                refProc = (req === null || req === void 0 ? void 0 : req.body).refProc;
+                return [4 /*yield*/, User_1.default.findOneAndUpdate({ _id: id }, { RefProc: refProc }).then(function (doc) {
+                        return res.send('success');
+                    }).catch(function (err) { return res.status(400).send({ error: err }); })];
             case 1:
                 _a.sent();
                 return [3 /*break*/, 3];
@@ -81,4 +79,4 @@ var createNewUser = function (req, res) { return __awaiter(void 0, void 0, void 
         }
     });
 }); };
-exports.createNewUser = createNewUser;
+exports.update = update;
