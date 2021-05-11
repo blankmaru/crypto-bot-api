@@ -17,7 +17,7 @@ export const update = async (req: Request, res: Response): Promise<Response | un
         const id = req?.params.id;
         const { refProc } = req?.body;
 
-        await User.findOneAndUpdate({ _id: id }, { RefProc: refProc }, { new: true }).then((doc) => {
+        await User.findOneAndUpdate({ _id: id }, { RefProc: refProc.toString() }, { new: true }).then((doc) => {
             return res.send(doc);
         })
 

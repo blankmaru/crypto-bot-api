@@ -27,6 +27,9 @@ var User = new Schema({
     },
     UserID: {
         type: String
+    },
+    RefProc: {
+        type: String
     }
 });
 exports.default = mongoose_1.default.model('@user', User);
