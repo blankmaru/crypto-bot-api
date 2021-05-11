@@ -8,6 +8,6 @@ import {
 } from '../controllers/user.controller';
 
 router.get('/', findAll);
-router.patch('/:id', update);
+router.post('/:id', update);
 
 export default router;
