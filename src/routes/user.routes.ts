@@ -11,6 +11,6 @@ import {
 router.get('/', findAll);
 router.post('/', createNewUser);
 
-router.patch('/', update);
+router.post('/', update);
 
 export default router;
