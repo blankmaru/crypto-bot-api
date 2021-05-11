@@ -14,7 +14,7 @@ export const findAll = async (req: Request, res: Response): Promise<Response | u
 
 export const update = async (req: Request, res: Response): Promise<Response | undefined> => {
     try {
-        const { id } = req?.params;
+        const id = req?.params.id;
         const { refProc } = req?.body;
 
         console.log(id)
