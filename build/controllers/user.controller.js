@@ -39,7 +39,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.update = exports.findAll = void 0;
+exports.deleteUser = exports.update = exports.findAll = void 0;
 var User_1 = __importDefault(require("../models/User"));
 var findAll = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
@@ -59,24 +59,43 @@ var findAll = function (req, res) { return __awaiter(void 0, void 0, void 0, fun
 }); };
 exports.findAll = findAll;
 var update = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var id, refProc, err_1;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
+    var id, _a, refProc, isPaid, err_1;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
             case 0:
-                _a.trys.push([0, 2, , 3]);
+                _b.trys.push([0, 2, , 3]);
                 id = req === null || req === void 0 ? void 0 : req.params.id;
-                refProc = (req === null || req === void 0 ? void 0 : req.body).refProc;
-                return [4 /*yield*/, User_1.default.findOneAndUpdate({ _id: id }, { RefProc: refProc.toString() }, { new: true }).then(function (doc) {
+                _a = req === null || req === void 0 ? void 0 : req.body, refProc = _a.refProc, isPaid = _a.isPaid;
+                return [4 /*yield*/, User_1.default.findOneAndUpdate({ _id: id }, { RefProc: refProc.toString(), is_paid: isPaid }, { new: true }).then(function (doc) {
                         return res.send(doc);
                     })];
             case 1:
-                _a.sent();
+                _b.sent();
                 return [3 /*break*/, 3];
             case 2:
-                err_1 = _a.sent();
+                err_1 = _b.sent();
                 return [2 /*return*/, res.status(400).send({ error: err_1 })];
             case 3: return [2 /*return*/];
         }
     });
 }); };
 exports.update = update;
+var deleteUser = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var id, err_2;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                id = req === null || req === void 0 ? void 0 : req.params.id;
+                return [4 /*yield*/, User_1.default.findByIdAndDelete(id).then(function () { return res.send('success'); })];
+            case 1:
+                _a.sent();
+                return [3 /*break*/, 3];
+            case 2:
+                err_2 = _a.sent();
+                return [2 /*return*/, res.status(400).send({ error: err_2 })];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); };
+exports.deleteUser = deleteUser;

@@ -24,4 +24,5 @@ var router = express.Router();
 var user_controller_1 = require("../controllers/user.controller");
 router.get('/', user_controller_1.findAll);
 router.patch('/:id', user_controller_1.update);
+router.delete('/:id', user_controller_1.deleteUser);
 exports.default = router;
