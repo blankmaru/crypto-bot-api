@@ -19,8 +19,10 @@ app.use(express.json());
 
 import user_routes from './routes/user.routes';
 import question_routes from './routes/question.route';
+import answers_routes from './routes/answer.route';
 
 app.use('/api/users', user_routes);
 app.use('/api/questions', question_routes);
+app.use('/api/answers', answers_routes);
 
 app.listen(port);
