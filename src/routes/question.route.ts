@@ -8,6 +8,6 @@ import {
 } from '../controllers/question.controller';
 
 router.post('/', create);
-router.get('/', getQuestions);
+router.get('/:userID', getQuestions);
 
 export default router;

@@ -3,7 +3,7 @@ import Question from "../models/Question";
 
 export const getQuestions = async (req: Request, res: Response): Promise<Response | undefined> => {
     try {
-        const {userID} = req.body;
+        const {userID} = req.params;
 
         await Question.find({ userID: userID }).then((docs) => {
             return res.status(200).send({ questions: docs });

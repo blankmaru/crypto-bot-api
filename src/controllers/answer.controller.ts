@@ -34,3 +34,16 @@ export const create = async (req: Request, res: Response): Promise<Response | un
         return res.status(400).send({ error: err });
     }
 }
+
+export const deleteAnswer = async (req: Request, res: Response): Promise<Response | undefined> => {
+    try {
+        const {id} = req.body;
+
+        await Answer.findByIdAndDelete(id).then((doc) => {
+            return res.status(200).send({ message: 'delete success' });
+        })
+
+    } catch(err) {
+        return res.status(400).send({ error: err });
+    }
+}
