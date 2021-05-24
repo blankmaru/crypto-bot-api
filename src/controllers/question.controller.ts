@@ -27,6 +27,7 @@ export const create = async (req: Request, res: Response): Promise<Response | un
 
         await newQuestion.save((err, doc) => {
             if (err) return res.status(400).send({error: err});
+            return res.status(200).send({ question: doc });
         })
 
     } catch(err) {
