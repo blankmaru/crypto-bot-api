@@ -18,7 +18,9 @@ mongoose.connect(db, {
 app.use(express.json());
 
 import user_routes from './routes/user.routes';
+import question_routes from './routes/question.route';
 
 app.use('/api/users', user_routes);
+app.use('/api/questions', question_routes);
 
 app.listen(port);
