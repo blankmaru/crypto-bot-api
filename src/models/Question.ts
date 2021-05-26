@@ -17,6 +17,10 @@ const Question = new Schema({
     chatID: {
         type: String,
         required: true
+    },
+    answer: {
+        type: mongoose.Types.ObjectId,
+        ref: '@answer'
     }
 })
 

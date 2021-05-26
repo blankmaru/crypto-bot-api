@@ -1,5 +1,6 @@
 import {Request, Response} from "express";
 import Answer from "../models/Answer";
+import Question from "../models/Question";
 
 export const getAnswers = async (req: Request, res: Response): Promise<Response | undefined> => {
     try {
@@ -16,18 +17,20 @@ export const getAnswers = async (req: Request, res: Response): Promise<Response 
 
 export const create = async (req: Request, res: Response): Promise<Response | undefined> => {
     try {
-        const {userID, username, text, chatID} = req.body;
+        const {userID, username, text, chatID, questionID} = req.body;
 
-        const newQuestion = new Answer({
+        const newAnswer = new Answer({
             userID,
             username,
             text,
             chatID
         })
 
-        await newQuestion.save((err, doc) => {
+        await newAnswer.save(async(err, doc) => {
             if (err) return res.status(400).send({error: err});
-            return res.status(200).send({ question: doc });
+            await Question.findOneAndUpdate({ _id: questionID }, {answer: doc._id}).then((item) => {
+                return res.status(200).send({ question: item, answer: doc });
+            })
         })
 
     } catch(err) {
