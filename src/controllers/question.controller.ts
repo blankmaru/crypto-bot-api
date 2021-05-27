@@ -5,7 +5,7 @@ export const getQuestions = async (req: Request, res: Response): Promise<Respons
     try {
         const {userID} = req.params;
 
-        await Question.find({ userID: userID }).then((docs) => {
+        await Question.find({ userID: userID }).populate('@answers').then((docs) => {
             return res.status(200).send({ questions: docs });
         })
 
