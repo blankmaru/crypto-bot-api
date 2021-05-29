@@ -17,13 +17,14 @@ export const getAnswers = async (req: Request, res: Response): Promise<Response 
 
 export const create = async (req: Request, res: Response): Promise<Response | undefined> => {
     try {
-        const {userID, username, text, chatID, questionID} = req.body;
+        const {userID, username, text, chatID, questionID, questionText} = req.body;
 
         const newAnswer = new Answer({
             userID,
             username,
             text,
-            chatID
+            chatID,
+            questionText
         })
 
         await newAnswer.save(async(err, doc) => {

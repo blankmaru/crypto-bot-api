@@ -18,6 +18,9 @@ const Answer = new Schema({
         type: String,
         required: true
     },
+    questionText: {
+        type: String,
+    },
     question: {
         type: mongoose.Types.ObjectId,
         ref: '@question'
