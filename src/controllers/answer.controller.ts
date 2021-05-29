@@ -4,7 +4,7 @@ import Question from "../models/Question";
 
 export const getAnswers = async (req: Request, res: Response): Promise<Response | undefined> => {
     try {
-        const {userID} = req.body;
+        const {userID} = req.params;
 
         await Answer.find({ userID: userID }).then((docs) => {
             return res.status(200).send({ questions: docs });
@@ -40,7 +40,7 @@ export const create = async (req: Request, res: Response): Promise<Response | un
 
 export const deleteAnswer = async (req: Request, res: Response): Promise<Response | undefined> => {
     try {
-        const {id} = req.body;
+        const {id} = req.params;
 
         await Answer.findByIdAndDelete(id).then((doc) => {
             return res.status(200).send({ message: 'delete success' });

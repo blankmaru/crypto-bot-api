@@ -9,7 +9,7 @@ import {
 } from '../controllers/answer.controller';
 
 router.post('/', create);
-router.get('/', getAnswers);
+router.get('/:id', getAnswers);
 router.delete('/:id', deleteAnswer);
 
 export default router;
